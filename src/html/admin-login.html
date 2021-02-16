@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+            
+    <title>Admin Login</title>
+</head>
+<body>
+    <div class="container center">
+        <br>
+        <br>
+        <br>
+        <img src="https://images-na.ssl-images-amazon.com/images/I/31jykaOuf9L._AC_SX466_.jpg" width="400">
+        <br>
+        <br>
+        <div class="row">
+          <h4 class="center">Admin Login</h4>
+            <form class="col s12">
+              <div class="row">
+                <div class="input-field col s12">
+                  <input id="userid" type="text">
+                  <label for="userid">Admin Username</label>
+                </div>
+                <div class="input-field col s12">
+                  <input id="psw" type="password">
+                  <label for="psw">Admin Password</label>
+                </div>
+              </div>
+            </form>
+          </div>
+          <a class="btn-large" onclick="login()">Login</a>
+    </div>
+
+    <script>
+      function login(){
+        username = document.getElementById('userid').value
+        psw = document.getElementById('psw').value
+        base_url = window.location.origin;
+        url = base_url + '/admin-login-chk?username='+username+'&psw='+psw
+        $.get(url, function(data, status){
+          for(i in data){
+            un = data[i].username
+            p = data[i].psw
+            auth = (un == username) && (p == psw)
+            if(auth){
+              window.open(base_url+'/all-users',"_self")
+              break
+            }
+          }
+          if(auth === false){
+            M.toast({html: 'Wrong Username or Password. Please Try Again!', displayLength: 6000})
+          }
+        })
+      }
+    </script>
+</body>
+</html>
