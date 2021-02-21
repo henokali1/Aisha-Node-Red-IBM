@@ -78,6 +78,24 @@
         function startPy(){
             document.getElementById('inital_content').style.visibility = 'hidden';
             document.getElementById('loader_content').style.visibility = 'visible';
+            start_script_url = 'http://127.0.0.1:5000/start_script'
+            base_url = window.location.origin;
+            telemetry_url = base_url + '/telemetry'        
+            setTimeout(function() {
+                window.open(telemetry_url,"_self")
+            }, 6000);
+
+            $.getJSON( start_script_url, function(data) {
+                console.log( "success" );
+            }).done(function() {
+                console.log( "second success" );
+            })
+            .fail(function() {
+                console.log( "error" );
+            })
+            .always(function() {
+                console.log( "complete" );
+                });
         }
     </script>
 </body>
