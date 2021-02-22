@@ -40,6 +40,7 @@ def download_faces():
 # Download face data from IBM database
 download_faces()
 
+video_feed_img = ''
 
 lr, fb, ud, yv = 0, 0, 0, 0
 # me = tello.Tello()
@@ -192,8 +193,14 @@ def on_release(key):
         # Stop listener
         return False
 
+
+def get_current_frame():
+    return video_feed_img
+
+
 def frame_stream_thread(name):
     global process_this_frame
+    global video_feed_img
     while True:
         # frame = me.get_frame_read().frame
         ret, frame = video_capture.read()
@@ -252,13 +259,17 @@ def frame_stream_thread(name):
                     print(f'Generating Report for {name}')
                     fn = f'imgs/report-imgs/{name}-report.jpg'
                     print(fn)
-                    cv2.imwrite(fn, frame, [int(cv2.IMWRITE_JPEG_QUALITY), 90])
+                    
                     generate_report(name, fn)
 
                 
 
         # Display the resulting image
         cv2.imshow('Video', frame)
+        fifn = 'static/imgs/cfi.jpg'
+        cv2.imwrite(fifn, frame, [int(cv2.IMWRITE_JPEG_QUALITY), 90])
+        
+        # cv2.imwrite(fifn, frame, [int(cv2.IMWRITE_JPEG_QUALITY), 90])
 
         # Hit 'q' on the keyboard to quit!
         if cv2.waitKey(1) & 0xFF == ord('q'):

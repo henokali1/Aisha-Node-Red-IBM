@@ -25,7 +25,7 @@
         <div class="row">
             <div class="container center">
                 <div class="input-field col s12">
-                    <select>
+                    <select id="select_drone">
                         <option value="" disabled selected>Choose your drone</option>
                         <option value="1">DJI-Tello #1</option>
                     </select>
@@ -72,26 +72,23 @@
 
     <script>
         function startPy(){
-            document.getElementById('inital_content').style.visibility = 'hidden';
-            document.getElementById('loader_content').style.visibility = 'visible';
-            start_script_url = 'http://127.0.0.1:5000/start_script'
-            base_url = window.location.origin;
-            telemetry_url = 'http://127.0.0.1:5000/telemetry'        
-            setTimeout(function() {
-                window.open(telemetry_url,"_self")
-            }, 6000);
+            select_val = document.getElementById('select_drone').value
+            if(select_val == ""){
+                M.toast({html: 'Please select a Drone', displayLength: 6000})
+            } else {
+                document.getElementById('inital_content').style.visibility = 'hidden';
+                document.getElementById('loader_content').style.visibility = 'visible';
+                start_script_url = 'http://127.0.0.1:5000/start_script'
+                base_url = window.location.origin;
+                telemetry_url = 'http://127.0.0.1:5000/telemetry'        
+                setTimeout(function() {
+                    window.open(telemetry_url,"_self")
+                }, 6000);
 
-            $.getJSON( start_script_url, function(data) {
-                console.log( "success" );
-            }).done(function() {
-                console.log( "second success" );
-            })
-            .fail(function() {
-                console.log( "error" );
-            })
-            .always(function() {
-                console.log( "complete" );
-                });
+                $.getJSON( start_script_url, function(data) {
+                    console.log( "." );
+                })
+            }
         }
     </script>
 </body>

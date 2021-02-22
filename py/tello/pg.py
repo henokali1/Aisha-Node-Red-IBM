@@ -12,6 +12,7 @@ import base64
 from datetime import datetime
 
 
+
 def get_face_db(img_name, img_url):
     img_data = requests.get(img_url).content
     with open(img_name, 'wb') as handler:
@@ -36,40 +37,6 @@ def download_faces():
         img_name = f"imgs/{i['name']}.{img_extension}"
         get_face_db(img_name, img_url)
     print('New face data download completed')
-
-# Download face data from IBM database
-download_faces()
-
-
-lr, fb, ud, yv = 0, 0, 0, 0
-# me = tello.Tello()
-video_capture = cv2.VideoCapture('tv2.mp4')
-
-# me.connect()
-# me.streamoff()
-# sleep(2)
-# me.streamon()
-
-speed = 50
-rec_names = {}
-
-preSetFacePath = 'imgs/'
-onlyfiles = [f for f in listdir(preSetFacePath) if isfile(join(preSetFacePath, f))]
-
-known_face_encodings = []
-known_face_names = []
-
-for i in onlyfiles:
-    lable = i.split('.')[0]
-    fn = preSetFacePath + i
-    known_face_encodings.append(face_recognition.face_encodings(face_recognition.load_image_file(fn))[0])
-    known_face_names.append(lable)
-
-# Initialize some variables
-face_locations = []
-face_encodings = []
-face_names = []
-process_this_frame = True
 
 
 def upload_rec_face(attachment_img):
@@ -192,6 +159,41 @@ def on_release(key):
         # Stop listener
         return False
 
+lr, fb, ud, yv = 0, 0, 0, 0
+# me = tello.Tello()
+video_capture = cv2.VideoCapture('tv2.mp4')
+
+# me.connect()
+# me.streamoff()
+# sleep(2)
+# me.streamon()
+
+speed = 50
+rec_names = {}
+
+preSetFacePath = 'imgs/'
+onlyfiles = [f for f in listdir(preSetFacePath) if isfile(join(preSetFacePath, f))]
+
+known_face_encodings = []
+known_face_names = []
+
+for i in onlyfiles:
+    lable = i.split('.')[0]
+    fn = preSetFacePath + i
+    known_face_encodings.append(face_recognition.face_encodings(face_recognition.load_image_file(fn))[0])
+    known_face_names.append(lable)
+
+# Initialize some variables
+face_locations = []
+face_encodings = []
+face_names = []
+process_this_frame = True
+
+
+# Download face data from IBM database
+download_faces()
+
+
 def frame_stream_thread(name):
     global process_this_frame
     while True:
@@ -252,13 +254,17 @@ def frame_stream_thread(name):
                     print(f'Generating Report for {name}')
                     fn = f'imgs/report-imgs/{name}-report.jpg'
                     print(fn)
-                    cv2.imwrite(fn, frame, [int(cv2.IMWRITE_JPEG_QUALITY), 90])
+                    
                     generate_report(name, fn)
 
                 
 
         # Display the resulting image
         cv2.imshow('Video', frame)
+        fifn = 'static/imgs/cfi.jpg'
+        cv2.imwrite(fifn, frame, [int(cv2.IMWRITE_JPEG_QUALITY), 90])
+        
+        # cv2.imwrite(fifn, frame, [int(cv2.IMWRITE_JPEG_QUALITY), 90])
 
         # Hit 'q' on the keyboard to quit!
         if cv2.waitKey(1) & 0xFF == ord('q'):
