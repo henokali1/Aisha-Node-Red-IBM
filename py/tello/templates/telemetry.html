@@ -70,17 +70,15 @@
       telemetry_url = 'http://127.0.0.1:5000/telemetry_update'
       function executeQuery() {
         $.getJSON( telemetry_url, function(data) {
-          battery = data.time.split('.')[1].slice(5,7)
-          document.getElementById('battery').innerText = battery+'%'
-          document.getElementById('speed').innerText = battery+'m/s'
-          document.getElementById('flight_time').innerText = battery+'min'
-          document.getElementById('height').innerText = battery+'cm'
-          document.getElementById('attitude').innerText = battery+'m'
-          console.log(battery)
+          document.getElementById('battery').innerText = data['battery']+'%'
+          document.getElementById('speed').innerText = data['speed'] +'m/s'
+          document.getElementById('flight_time').innerText = data['flight_time'] +'min'
+          document.getElementById('height').innerText = data['height'] +'cm'
+          document.getElementById('attitude').innerText = data['attitude'] +'m'
         })
         setTimeout(executeQuery, 1000); // you could choose not to continue on failure...
     }
     </script>
-    
+
 </body>
 </html>
