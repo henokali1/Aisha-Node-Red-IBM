@@ -2,7 +2,6 @@ import base64
 import requests
 from datetime import datetime
 
-
 def upload_rec_face():
     with open("imgs/test.jpg", "rb") as file:
         url = "https://api.imgbb.com/1/upload"
@@ -78,4 +77,4 @@ def generate_report(convict_name):
     for i in res:
         print(i, res[i])
 
-print(generate_report('Obama'))
+# print(generate_report('Obama'))
