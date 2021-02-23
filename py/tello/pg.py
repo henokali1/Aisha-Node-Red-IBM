@@ -268,8 +268,6 @@ def telemetry_update():
     height = randint(0,400)
     attitude = randint(0,1000)
 
-    with open("current_frame.txt") as file:
-        img = file.read()
     data = {
         'battery': battery,
         'speed': speed,

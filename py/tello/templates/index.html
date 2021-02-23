@@ -1,73 +1,169 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <title>Live Feed</title>
-</head>
-<body>
-<div class="container center">
-    <div class="row">
-            <h3>Live Feed</h3>
-            <img src="/imgs/report-imgs/Obama 2-report.jpg" width="70%">
-            <!-- <img class="center" src="{{ url_for('video_feed') }}" width="70%"> -->
-    </div>
-</div>
-<div class="container">
-    <div class="row">
-        <div class="col s4">
-            <div class="row">
-              <div class="col s4"></div>
-              <div class="col s4"><a style="padding-left: 30px;" class="purple darken-3 waves-effect waves-light btn"><i class="material-icons left">arrow_upward</i></a></div>
-              <div class="col s4"></div>
-            </div>
-            <div class="row">
-              <div class="col s4"><a style="padding-left: 30px;" class="purple darken-3 waves-effect waves-light btn"><i class="material-icons left">arrow_back</i></a></div>
-              <div class="col s4"></div>
-              <div class="col s4"><a style="padding-left: 30px;" class="purple darken-3 waves-effect waves-light btn"><i class="material-icons left">arrow_forward</i></a></div>
-            </div>
-            <div class="row">
-              <div class="col s4"></div>
-              <div class="col s4"><a style="padding-left: 30px;" class="purple darken-3 waves-effect waves-light btn"><i class="material-icons left">arrow_downward</i></a></div>
-              <div class="col s4"></div>
-            </div>
-        </div>
-        <div class="center col s4">
-            <a onclick="cntrl('take_off')" class="waves-effect waves-light btn">Take Off</a>
-            <br>
-            <br>
-            <a onclick="cntrl('land')" class="waves-effect waves-light btn">Land</a>
-            <br>
-            <br>
-            <a onclick="cntrl('land')" class="waves-effect waves-light btn">Telemetry</a>
-        </div>
-        <div class="col s4">
-            <div class="row">
-              <div class="col s4"></div>
-              <div class="col s4"><a style="padding-left: 30px;" class="red accent-3 waves-effect waves-light btn"><i class="material-icons left">arrow_upward</i></a></div>
-              <div class="col s4"></div>
-            </div>
-            <div class="row">
-              <div class="col s4"><a style="padding-left: 30px;" class="red accent-3 waves-effect waves-light btn"><i class="material-icons left">arrow_back</i></a></div>
-              <div class="col s4"></div>
-              <div class="col s4"><a style="padding-left: 30px;" class="red accent-3 waves-effect waves-light btn"><i class="material-icons left">arrow_forward</i></a></div>
-            </div>
-            <div class="row">
-              <div class="col s4"></div>
-              <div class="col s4"><a style="padding-left: 30px;" class="red accent-3 waves-effect waves-light btn"><i class="material-icons left">arrow_downward</i></a></div>
-              <div class="col s4"></div>
-            </div>
-        </div>
-    </div>
-</div>
+<!DOCTYPE html> 
+<html> 
 
-<script>
-    function cntrl(cmd){
-        alert(cmd);
-    }
-</script>
-</body>
-</html>
+<head> 
+	<link rel="stylesheet" href= 
+"https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css"> 
+
+	<link href= 
+"https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> 
+	<script type="text/javascript" src= 
+		"https://code.jquery.com/jquery-2.1.1.min.js"> 
+	</script> 
+	<script src= 
+"https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"> 
+	</script> 
+</head> 
+
+<body> 
+    <div class="row">
+        <br>
+        <div class="col s12">
+            <a href="https://node-red-arzjk-2021-01-25.eu-gb.mybluemix.net/dashboard">
+                <img class="right" src="https://i.ibb.co/gdbSRYS/pngfind-com-uae-flag-png-5861568.png" width="80">
+            </a>
+        </div>
+    </div>
+    <div class="container center">
+        <div class="row">
+                <h3>Live Feed</h3>
+                <!-- <img src="/imgs/report-imgs/Obama 2-report.jpg" width="70%"> -->
+                <img class="center" src="{{ url_for('video_feed') }}" width="70%">
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col s4">
+                <div class="row">
+                <div class="col s4"></div>
+                <div class="col s4"><a style="padding-left: 30px;" class="purple darken-3 waves-effect waves-light btn"><i class="material-icons left">arrow_upward</i></a></div>
+                <div class="col s4"></div>
+                </div>
+                <div class="row">
+                <div class="col s4"><a style="padding-left: 30px;" class="purple darken-3 waves-effect waves-light btn"><i class="material-icons left">arrow_back</i></a></div>
+                <div class="col s4"></div>
+                <div class="col s4"><a style="padding-left: 30px;" class="purple darken-3 waves-effect waves-light btn"><i class="material-icons left">arrow_forward</i></a></div>
+                </div>
+                <div class="row">
+                <div class="col s4"></div>
+                <div class="col s4"><a style="padding-left: 30px;" class="purple darken-3 waves-effect waves-light btn"><i class="material-icons left">arrow_downward</i></a></div>
+                <div class="col s4"></div>
+                </div>
+            </div>
+            <div class="center col s4">
+                <a onclick="cntrl('take_off')" class="waves-effect waves-light btn">Take Off</a>
+                <br>
+                <br>
+                <a onclick="cntrl('land')" class="waves-effect waves-light btn">Land</a>
+                <br>
+                <br>
+                <a class="waves-effect waves-light btn modal-trigger" href="#demo-modal">Telemetry</a>
+            </div>
+            <div class="col s4">
+                <div class="row">
+                <div class="col s4"></div>
+                <div class="col s4"><a style="padding-left: 30px;" class="red accent-3 waves-effect waves-light btn"><i class="material-icons left">arrow_upward</i></a></div>
+                <div class="col s4"></div>
+                </div>
+                <div class="row">
+                <div class="col s4"><a style="padding-left: 30px;" class="red accent-3 waves-effect waves-light btn"><i class="material-icons left">arrow_back</i></a></div>
+                <div class="col s4"></div>
+                <div class="col s4"><a style="padding-left: 30px;" class="red accent-3 waves-effect waves-light btn"><i class="material-icons left">arrow_forward</i></a></div>
+                </div>
+                <div class="row">
+                <div class="col s4"></div>
+                <div class="col s4"><a style="padding-left: 30px;" class="red accent-3 waves-effect waves-light btn"><i class="material-icons left">arrow_downward</i></a></div>
+                <div class="col s4"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+		<!-- Modal Structure -->
+		<div id="demo-modal" class="modal"> 
+			<div class="modal-content">
+                <div class="container center">
+                    <h2><strong>Telemetry</strong></h2>
+                    <hr>
+                    <br>
+                    <div class="row">
+                      <div class="col s4 left">
+                        <img class="left" src="https://www.freeiconspng.com/thumbs/battery-icon/battery-icon-13.png" width="80px" alt="">
+                      </div>
+                      <div class="col s4 left"><strong><h4 class="left">Battery</h4></strong></div>
+                      <div class="col s4 left"><strong><h4 id="battery" class="right">80%</h4></strong></div>
+                    </div>
+                    <div class="row">
+                      <div class="col s4 left">
+                        <img class="left" src="https://img.icons8.com/ios/452/speed.png" width="80px" alt="">
+                      </div>
+                      <div class="col s4 left"><strong><h4 class="left">Speed</h4></strong></div>
+                      <div class="col s4 left"><strong><h4 id="speed" class="right">0m/s</h4></strong></div>
+                    </div>
+                    <div class="row">
+                      <div class="col s4 left">
+                        <img class="left" src="https://static.thenounproject.com/png/1671593-200.png" width="80px" alt="">
+                      </div>
+                      <div class="col s4 left"><strong><h4 class="left">Flight Time</h4></strong></div>
+                      <div class="col s4 left"><strong><h4 id="flight_time" class="right">0 min </h4></strong></div>
+                    </div>
+                    <div class="row">
+                      <div class="col s4 left">
+                        <img class="left" src="https://img.icons8.com/ios/452/height.png" width="80px" alt="">
+                      </div>
+                      <div class="col s4 left"><strong><h4 class="left">Height</h4></strong></div>
+                      <div class="col s4 left"><strong><h4 id="height" class="right">0cm</h4></strong></div>
+                    </div>
+                    <div class="row">
+                      <div class="col s4 left">
+                        <img class="left" src="https://static.thenounproject.com/png/209086-200.png" width="80px" alt="">
+                      </div>
+                      <div class="col s4 left"><strong><h4 class="left">Attitude</h4></strong></div>
+                      <div class="col s4 left"><strong><h4 id="attitude" class="right">0m</h4></strong></div>
+                    </div>
+                </div>                            
+			</div> 
+
+			<div class="modal-footer"> 
+				<a href="#!" class="modal-action 
+					modal-close waves-effect waves-green 
+					btn green lighten-1"> 
+					Close 
+				</a> 
+			</div> 
+		</div> 
+	<script> 
+		$(document).ready(function (){
+            $('.modal').modal();
+            setTimeout(executeQuery, 5000);
+        }) 
+	</script> 
+    
+    <script>
+        function cntrl(cmd){
+            alert(cmd);
+        }
+    </script>
+
+<script defer>
+    telemetry_url = 'http://127.0.0.1:5000/telemetry_update'
+    function executeQuery() {
+      $.getJSON( telemetry_url, function(data) {
+        document.getElementById('battery').innerText = data['battery']+'%'
+        document.getElementById('speed').innerText = data['speed'] +'m/s'
+        document.getElementById('flight_time').innerText = data['flight_time'] +'min'
+        document.getElementById('height').innerText = data['height'] +'cm'
+        document.getElementById('attitude').innerText = data['attitude'] +'m'
+        // console.log(data['img'].slice(0,10))
+        // document.getElementById('vid_feed').src= 'data:image/jpeg;base64,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'
+        document.getElementById('vid_feed').src = 'http://127.0.0.1:5000/static/imgs/cfi.jpg'
+        console.log('im called')
+      })
+      setTimeout(executeQuery, 1000); // you could choose not to continue on failure...
+  }
+  </script>
+
+</body> 
+
+</html> 
