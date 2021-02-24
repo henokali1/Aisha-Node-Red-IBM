@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <title>Telemetry</title>
+</head>
+<body>
+    <div class="row">
+        <br>
+        <div class="col s12">
+            <img class="right" src="https://i.ibb.co/gdbSRYS/pngfind-com-uae-flag-png-5861568.png" width="80">
+        </div>
+    </div>
+
+    <div class="container center">
+        <h2><strong>Telemetry</strong></h2>
+        <hr>
+        <br>
+        <div class="row">
+          <div class="col s4 left">
+            <img class="left" src="https://www.freeiconspng.com/thumbs/battery-icon/battery-icon-13.png" width="80px" alt="">
+          </div>
+          <div class="col s4 left"><strong><h4 class="left">Battery</h4></strong></div>
+          <div class="col s4 left"><strong><h4 class="right">80%</h4></strong></div>
+        </div>
+        <div class="row">
+          <div class="col s4 left">
+            <img class="left" src="https://img.icons8.com/ios/452/speed.png" width="80px" alt="">
+          </div>
+          <div class="col s4 left"><strong><h4 class="left">Speed</h4></strong></div>
+          <div class="col s4 left"><strong><h4 class="right">0m/s</h4></strong></div>
+        </div>
+        <div class="row">
+          <div class="col s4 left">
+            <img class="left" src="https://static.thenounproject.com/png/1671593-200.png" width="80px" alt="">
+          </div>
+          <div class="col s4 left"><strong><h4 class="left">Flight Time</h4></strong></div>
+          <div class="col s4 left"><strong><h4 class="right">0 min </h4></strong></div>
+        </div>
+        <div class="row">
+          <div class="col s4 left">
+            <img class="left" src="https://img.icons8.com/ios/452/height.png" width="80px" alt="">
+          </div>
+          <div class="col s4 left"><strong><h4 class="left">Height</h4></strong></div>
+          <div class="col s4 left"><strong><h4 class="right">0cm</h4></strong></div>
+        </div>
+        <div class="row">
+          <div class="col s4 left">
+            <img class="left" src="https://static.thenounproject.com/png/209086-200.png" width="80px" alt="">
+          </div>
+          <div class="col s4 left"><strong><h4 class="left">Attitude</h4></strong></div>
+          <div class="col s4 left"><strong><h4 class="right">0m</h4></strong></div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('select').formSelect();
+        });
+    </script>
+
+    <script defer>
+      telemetry_url = 'http://127.0.0.1:5000/telemetry_update'
+      function executeQuery() {
+        $.getJSON( telemetry_url, function(data) {
+                console.log( "success" );
+            }).done(function() {
+                console.log( "second success" );
+            })
+            .fail(function() {
+                console.log( "error" );
+            })
+            .always(function() {
+                console.log( "complete" );
+                });
+        setTimeout(executeQuery, 5000); // you could choose not to continue on failure...
+    }
+
+    $(document).ready(function() {
+      // run the first time; all subsequent calls will take care of themselves
+      setTimeout(executeQuery, 5000);
+    });
+    </script>
+    
+</body>
+</html>
