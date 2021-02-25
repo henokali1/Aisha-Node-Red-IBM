@@ -36,9 +36,7 @@ def telemetry_update():
         'height': height,
         'attitude': attitude,
     }
-
     json_data = jsonify(data)
-
     return json_data
 
 

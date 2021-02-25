@@ -10,6 +10,7 @@ from os import listdir, remove
 from os.path import isfile, join
 import base64
 from datetime import datetime
+import pickle
 
 
 def get_face_db(img_name, img_url):
@@ -43,13 +44,13 @@ download_faces()
 video_feed_img = ''
 
 lr, fb, ud, yv = 0, 0, 0, 0
-# me = tello.Tello()
-video_capture = cv2.VideoCapture('tv2.mp4')
+me = tello.Tello()
+# video_capture = cv2.VideoCapture('tv2.mp4')
 
-# me.connect()
-# me.streamoff()
-# sleep(2)
-# me.streamon()
+me.connect()
+me.streamoff()
+sleep(2)
+me.streamon()
 
 speed = 50
 rec_names = {}
@@ -126,6 +127,7 @@ def get_convict_info(convict_name):
             return i
 
 def generate_report(convict_name, attachment_img):
+    print(f'Generating report for {convict_name}')
     cdt = get_current_date_time()
     lm = get_last_mission()
     convict_info = get_convict_info(convict_name)
@@ -201,9 +203,22 @@ def get_current_frame():
 def frame_stream_thread(name):
     global process_this_frame
     global video_feed_img
+    print('Connecting to drone...')
+    telemetry_data = {}
     while True:
-        # frame = me.get_frame_read().frame
-        ret, frame = video_capture.read()
+        telemetry_data['speed'] = me.get_speed()
+        telemetry_data['battery'] = me.get_battery()
+        telemetry_data['flight_time'] = me.get_flight_time()
+        telemetry_data['height'] = me.get_height()
+        telemetry_data['attitude'] = me.get_attitude()
+        telemetry_data['barometer'] = me.get_barometer()
+        telemetry_data['distance_tof'] = me.get_distance_tof()
+        print(telemetry_data)
+        # Save telemetry data
+        with open('telemetry.pickle', 'wb') as handle:
+            pickle.dump(telemetry_data, handle, protocol=pickle.HIGHEST_PROTOCOL)
+        frame = me.get_frame_read().frame
+        # ret, frame = video_capture.read()
         small_frame = cv2.resize(frame, (0, 0), fx=0.25, fy=0.25)
 
         # Convert the image from BGR color (which OpenCV uses) to RGB color (which face_recognition uses)
@@ -259,7 +274,7 @@ def frame_stream_thread(name):
                     print(f'Generating Report for {name}')
                     fn = f'imgs/report-imgs/{name}-report.jpg'
                     print(fn)
-                    
+                    cv2.imwrite(fn, frame, [int(cv2.IMWRITE_JPEG_QUALITY), 90])
                     generate_report(name, fn)
 
                 
