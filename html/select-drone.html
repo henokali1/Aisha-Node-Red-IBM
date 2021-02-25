@@ -81,8 +81,10 @@
                 document.getElementById('inital_content').style.visibility = 'hidden';
                 document.getElementById('loader_content').style.visibility = 'visible';
                 base_url = window.location.origin;
-                telemetry_url = 'http://127.0.0.1:5000/'        
+                telemetry_url = 'http://127.0.0.1:5000/telemetry'    
+                start_py_url = 'http://127.0.0.1:5000/start_script'        
                 setTimeout(function() {
+                    // window.open(start_py_url,"_blank")
                     window.open(telemetry_url,"_self")
                 }, 6000);
             }
