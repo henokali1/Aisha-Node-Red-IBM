@@ -41,7 +41,6 @@ def download_faces():
 # Download face data from IBM database
 download_faces()
 
-video_feed_img = ''
 
 lr, fb, ud, yv = 0, 0, 0, 0
 me = tello.Tello()
@@ -165,11 +164,11 @@ def on_press(key):
             ud = speed
         if(key.char == 'd') or (key.char == 'D'):
             yv = speed
-        if(key.char == 'q') or (key.char == 'Q'):
+        if(key.char == 'l') or (key.char == 'L'):
             me.land()
             me.streamoff()
             pass
-        if(key.char == 'e') or (key.char == 'E'):
+        if(key.char == 't') or (key.char == 'T'):
             me.takeoff()
             pass
     except AttributeError:
@@ -195,14 +194,8 @@ def on_release(key):
         # Stop listener
         return False
 
-
-def get_current_frame():
-    return video_feed_img
-
-
 def frame_stream_thread(name):
     global process_this_frame
-    global video_feed_img
     print('Connecting to drone...')
     telemetry_data = {}
     while True:
@@ -291,17 +284,17 @@ def frame_stream_thread(name):
             break
 
     # Release handle to the webcam
-    video_capture.release()
-    cv2.destroyAllWindows()
+    # video_capture.release()
+    # cv2.destroyAllWindows()
 
 frame_thread = threading.Thread(target=frame_stream_thread, args=(1,))
 frame_thread.start()
 
-# listener = keyboard.Listener(on_press=on_press, on_release=on_release)
-# listener.start()
+listener = keyboard.Listener(on_press=on_press, on_release=on_release)
+listener.start()
 
 while 1:
-    pass
-    # vals = [lr, fb, ud, yv]
-    # me.send_rc_control(vals[0], vals[1], vals[2], vals[3])
-    # sleep(0.05)
+    # pass
+    vals = [lr, fb, ud, yv]
+    me.send_rc_control(vals[0], vals[1], vals[2], vals[3])
+    sleep(0.05)

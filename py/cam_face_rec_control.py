@@ -48,29 +48,29 @@ def on_press(key):
     global yv
     try:
         if(key.char == 'a') or (key.char == 'A'):
-            yv = -speed
+            yv = speed
         if(key.char == 's') or (key.char == 'S'):
             ud = -speed
         if(key.char == 'w') or (key.char == 'W'):
             ud = speed
         if(key.char == 'd') or (key.char == 'D'):
-            yv = speed
-        if(key.char == 'q') or (key.char == 'Q'):
+            yv = -speed
+        if(key.char == 'l') or (key.char == 'L'):
             me.land()
             me.streamoff()
             pass
-        if(key.char == 'e') or (key.char == 'E'):
+        if(key.char == 't') or (key.char == 'T'):
             me.takeoff()
             pass
     except AttributeError:
         if(key == key.left):
-            lr = -speed
-        if(key == key.right):
             lr = speed
+        if(key == key.right):
+            lr = -speed
         if(key == key.up):
-            fb = speed
-        if(key == key.down):
             fb = -speed
+        if(key == key.down):
+            fb = speed
 
 def on_release(key):
     global lr

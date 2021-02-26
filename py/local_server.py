@@ -18,7 +18,7 @@ def telemetry():
 @app.route("/start_script")
 def start_script():
     print('Starting Script...')
-    system('py -3 v1.py')
+    system('py -3 v3.py')
     return "Start Script"
 
 @app.route("/telemetry_update")
@@ -32,13 +32,6 @@ def telemetry_update():
 
     with open('telemetry.pickle', 'rb') as handle:
         data = pickle.load(handle)
-    # data = {
-    #     'battery': battery,
-    #     'speed': speed,
-    #     'flight_time': flight_time,
-    #     'height': height,
-    #     'attitude': attitude,
-    # }
     json_data = jsonify(data)
     return json_data
 

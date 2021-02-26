@@ -11,7 +11,7 @@
   <div class="row">
       <br>
       <div class="col s12">
-          <a href="/dashboard">
+          <a href="https://node-red-arzjk-2021-01-25.eu-gb.mybluemix.net/dashboard">
               <img class="right" src="https://i.ibb.co/gdbSRYS/pngfind-com-uae-flag-png-5861568.png" width="80">
           </a>
       </div>
@@ -47,7 +47,7 @@
             <img class="left" src="https://img.icons8.com/ios/452/height.png" width="80px" alt="">
           </div>
           <div class="col s4 left"><strong><h4 class="left">Height</h4></strong></div>
-          <div class="col s4 left"><strong><h4 id="height" class="right">0cm</h4></strong></div>
+          <div class="col s4 left"><strong><h4 id="height" class="right">0</h4></strong></div>
         </div>
         <div class="row">
           <div class="col s4 left">
@@ -74,11 +74,11 @@
         $.getJSON( telemetry_url, function(data) {
           document.getElementById('battery').innerText = data['battery']+'%'
           document.getElementById('speed').innerText = data['speed'] +'m/s'
-          document.getElementById('flight_time').innerText = data['flight_time'] +'min'
-          document.getElementById('height').innerText = data['height'] +'cm'
-          document.getElementById('attitude').innerText = data['attitude'] +'m'
+          document.getElementById('flight_time').innerText = data['flight_time']
+          document.getElementById('height').innerText = data['height']
+          document.getElementById('attitude').innerText = data['attitude']
         })
-        setTimeout(executeQuery, 1000); // you could choose not to continue on failure...
+        setTimeout(executeQuery, 10000); // you could choose not to continue on failure...
     }
     </script>
 
