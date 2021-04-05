@@ -30,6 +30,7 @@
               <th>Username</th>
               <th>Full Name</th>
               <th>Password</th>
+              <th>Edit</th>
               <th class="right">Delete</th>
           </tr>
         </thead>
@@ -51,6 +52,7 @@
                         <td>${data[i].username}</td>
                         <td>${data[i].fullname}</td>
                         <td>${data[i].psw}</td>
+                        <td><a href="/edit-user?ident=${data[i]._id}"><i class="material-icons">edit</i></a></td>
                         <td class="right"><a onclick="del_user('${data[i]._id}')"><i class="material-icons">delete</i></a></td>
                         </tr>`
 
