@@ -40,12 +40,15 @@
                       <div class="col s4">
                         <img class="left" src="${data[i].img_url}" width="100px" alt="">
                       </div>
-                      <div class="col s7">
+                      <div class="col s6">
                         <div class="row">
                           <div class="right col s12"><strong>Name:</strong> ${data[i].name}</div>
                           <div class="col s12"><strong>Age:</strong> ${data[i].age}</div>
                           <div class="col s12"><strong>Previous Case:</strong> ${data[i].prev_case}</div>
                         </div>
+                      </div>
+                      <div class="col s1">
+                        <a href="/edit-reg-face?ident=${data[i]._id}"><i class="medium material-icons right">edit</i></a>
                       </div>
                       <div class="col s1">
                         <a onclick="del_user('${data[i]._id}')"><i class="medium material-icons right">delete</i></a>
