@@ -11,9 +11,10 @@
   <div class="row">
       <br>
       <div class="col s12">
-          <a href="https://node-red-arzjk-2021-01-25.eu-gb.mybluemix.net/dashboard">
-              <img class="right" src="https://i.ibb.co/gdbSRYS/pngfind-com-uae-flag-png-5861568.png" width="80">
-          </a>
+        <a onclick="sos()" class="btn btn-large left red">SOS</a>
+        <a href="https://node-red-arzjk-2021-01-25.eu-gb.mybluemix.net/dashboard">
+            <img class="right" src="https://i.ibb.co/gdbSRYS/pngfind-com-uae-flag-png-5861568.png" width="80">
+        </a>
       </div>
   </div>
 
@@ -85,6 +86,16 @@
     <script>
       py_script_url = 'http://127.0.0.1:5000/start_script'
       $.getJSON( py_script_url, function(data) {})
+    </script>
+
+    <script>
+      function sos(){
+        console.log('sos clickded')
+        py_script_url = 'http://127.0.0.1:5000/sos'
+        $.getJSON( py_script_url, function(data) {
+          console.log(data)
+        })
+      }
     </script>
 
 </body>

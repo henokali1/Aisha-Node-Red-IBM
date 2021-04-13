@@ -6,6 +6,7 @@ import pickle
 
 
 app = Flask(__name__)
+sos_state = False
 
 @app.route("/")
 def hello():
@@ -18,7 +19,7 @@ def telemetry():
 @app.route("/start_script")
 def start_script():
     print('Starting Script...')
-    system('py -3 v3.py')
+    system('py -3 v4.py')
     return "Start Script"
 
 @app.route("/telemetry_update")
@@ -35,6 +36,13 @@ def telemetry_update():
     json_data = jsonify(data)
     return json_data
 
+
+@app.route("/sos")
+def sos():
+    with open('sos.pickle', 'wb') as handle:
+        data={'sos': True}
+        pickle.dump(data, handle, protocol=pickle.HIGHEST_PROTOCOL)
+    return jsonify({'data': 'python: sos received'})
 
 if __name__ == "__main__":
     app.run(debug=True)
