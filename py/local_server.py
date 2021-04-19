@@ -19,7 +19,7 @@ def telemetry():
 @app.route("/start_script")
 def start_script():
     print('Starting Script...')
-    system('py -3 v4.py')
+    system('py -3 v5.py')
     return "Start Script"
 
 @app.route("/telemetry_update")
